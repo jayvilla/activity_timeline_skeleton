@@ -1,7 +1,14 @@
-import ActivityTimeline from "@/components/ActivityTimeline";
-import FiltersBar from "@/components/FiltersBar";
+"use client";
 
-export default function Home() {
+import ErrorState from "@/components/ErrorState";
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
       <div className="max-w-4xl mx-auto bg-white dark:bg-black">
@@ -10,13 +17,10 @@ export default function Home() {
             Activity
           </h1>
         </header>
-        <FiltersBar />
-        <ActivityTimeline />
-        {/* TODO: Wire filters → getEvents */}
-        {/* TODO: Handle loading state */}
-        {/* TODO: Handle error state */}
-        {/* TODO: Handle empty state */}
+        <ErrorState />
+        {/* TODO: Implement retry/reset functionality */}
       </div>
     </div>
   );
 }
+
